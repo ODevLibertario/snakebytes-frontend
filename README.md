@@ -1,27 +1,23 @@
-# SnakebytesFrontend
+# Snakebytes Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+Snakebytes game frontend, this is a classic snake game that pays
+sats to the leader of the leaderboard after some time has passed.
 
-## Development server
+The prize is paid as a PGP encrypted cashu token, the user needs to sign in
+with an username and a PGP public key to play.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+There are some anti-cheat measures planned. But initially the prize will be so low that it will not be worth to cheat.
 
-## Code scaffolding
+## Running the code
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This is an Angular 15 project with NPM. Starts and builds with the default commands.
 
-## Build
+## License
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+MIT License, feel free to use it in any way you would like without crediting me.
 
-## Running unit tests
+## Contributions
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Feel free to open PRs if you think of improvements. If you like the project and would like
+to support it financially drop me some zaps on nostr: npub1cpxjrlnhfmcclcsly5c0dvrgvl5nsctzxpp4s9f2nh4qeq50mwsq4089fc
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
