@@ -1,0 +1,22 @@
+<div style="display: flex; width: 100%; justify-content: center">
+  <div
+    style="margin-top: 3%; background-color: rgba(245,157,65,0.7); width: 75vh; min-height: 80vh; display: flex;  align-items: center; flex-direction: column">
+    <div style="margin-top: 3%">
+      <span style="font-size: 42px; color:white; font-weight: bold">Leaderboard</span>
+    </div>
+    <div style="width: 100%">
+      <table style="width: 100%">
+        <tr>
+          <td style="width: 50%; text-align: center"><span style="font-size: 24px; color:white; ">Username</span></td>
+          <td style="width: 50%; text-align: center"><span style="font-size: 24px; color:white; ">Score</span></td>
+        </tr>
+
+        <tr *ngFor="let row of this.scores" style="border-bottom: 1px solid #ddd; width: 80%">
+          <td style="width: 50%; text-align: center"><span style="font-size: 16px; color:white; ">{{row.username}}</span></td>
+          <td style="width: 50%; text-align: center"><span style="font-size: 16px; color:white; ">{{row.score}}</span></td>
+          <th></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

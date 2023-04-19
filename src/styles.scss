@@ -1,0 +1,13 @@
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+@import "@fortawesome/fontawesome-free/scss/regular.scss";
+@import "@fortawesome/fontawesome-free/scss/brands.scss";
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url("/assets/background-scaled.jpeg");
+  background-repeat: repeat-x;
+  background-size: cover;
+  height: 100vh;
+}
