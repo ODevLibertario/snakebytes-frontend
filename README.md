@@ -21,3 +21,6 @@ MIT License, feel free to use it in any way you would like without crediting me.
 Feel free to open PRs if you think of improvements. If you like the project and would like
 to support it financially drop me some zaps on nostr: npub1cpxjrlnhfmcclcsly5c0dvrgvl5nsctzxpp4s9f2nh4qeq50mwsq4089fc
 
+## Screenshot
+
+![ScreenShot](screenshot.png)
