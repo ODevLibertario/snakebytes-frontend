@@ -12,7 +12,6 @@ export class Coin extends Phaser.GameObjects.Image {
   }
 
   eat() {
-
     const x = Phaser.Math.Between(0, 23);
     const y = Phaser.Math.Between(0, 18);
 
