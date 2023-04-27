@@ -10,6 +10,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { PrizeComponent } from './prize/prize.component';
 import { FaqComponent } from './faq/faq.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MdbCollapseModule
+    MdbCollapseModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

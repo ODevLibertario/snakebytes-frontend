@@ -1,1 +1,28 @@
-<p>sign-in works!</p>
+<div style="display: flex; width: 100%; justify-content: center">
+  <div
+    style="margin-top: 3%; background-color: rgba(245,157,65,0.8); width: 75vh; min-height: 80vh; display: flex;  align-items: center; flex-direction: column">
+    <div style="margin-top: 3%">
+      <span style="font-size: 34px; color:white; font-weight: bold">Sign in</span>
+    </div>
+    <div style="margin-top: 3%;width: 100%; display: flex; justify-content: center">
+      <div style="width: 85%;border: 2px solid #dddddd; padding: 5%; border-radius: 6px">
+        <form [formGroup]="signInForm!!" (ngSubmit)="signIn()">
+          <div class="input-group mb-3">
+            <span class="input-group-text" style="color:white">Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default" formControlName="username" required maxlength="20"/>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default" style="color:white">PGP Public Key</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default" formControlName="publicKey" required maxlength="5000" />
+          </div>
+          <div class="input-group mb-3" style="justify-content: flex-end">
+            <button type="submit" class="btn btn-primary" style="background-color: #009C03;" [disabled]=signInForm?.invalid>Sign In</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
