@@ -25,7 +25,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": ["node_modules/phaser/dist/phaser.min.js"]
           },

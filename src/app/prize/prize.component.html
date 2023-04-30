@@ -1,5 +1,5 @@
 <div style="display: flex; width: 100%; justify-content: center">
   <img src="assets/trophy.svg" width="40%" style="margin-top: 5%" id="trophy">
-  <div style="position: absolute; margin-top: 7%; word-wrap: break-word; max-width: 23%">cashu1b86355f13a7f0b90c8b6053c0254399994dfbb3843e08d603e292ca13b8f672ed5e58791c10f3e36daec9699cc2fbdc88b4fe116efa7fce016938b787043818</div>
-  <div style="position: absolute; margin-top: 35%; color: #FDD200">O Dev Libertario</div>
+  <div style="position: absolute; margin-top: 7%; word-wrap: break-word; max-width: 23%" *ngIf="prize">{{prize.payload}}</div>
+  <div style="position: absolute; margin-top: 35%; color: #FDD200" *ngIf="prize">{{prize.username}}</div>
 </div>

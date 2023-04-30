@@ -25,7 +25,7 @@
     >
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="username">
           <a class="nav-link active" aria-current="page" routerLink="game" style="color: white">Play!</a>
         </li>
         <li class="nav-item">
@@ -41,8 +41,14 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-        <button type="button" class="btn btn-primary px-3 me-2" routerLink="sign-in" style="background-color: #059C05">
+        <button *ngIf="!username" type="button" class="btn btn-primary px-3 me-2" routerLink="sign-up" style="background-color: #059C05">
+          Sign Up
+        </button>
+        <button *ngIf="!username" type="button" class="btn btn-primary px-3 me-2" routerLink="sign-in" style="background-color: #059C05">
           Sign In
+        </button>
+        <button *ngIf="username" type="button" class="btn btn-primary px-3 me-2" style="background-color: #e23c3c" (click)="logout()">
+          Logout
         </button>
         <a
           class="btn btn-dark px-3"

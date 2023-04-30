@@ -6,6 +6,7 @@ import Vector2 = Phaser.Math.Vector2;
 import ScenePlugin = Phaser.Scenes.ScenePlugin;
 import Sprite = Phaser.GameObjects.Sprite;
 import {PlayLog} from "../PlayLog";
+import {Observable} from "rxjs";
 
 const UP = 0;
 const DOWN = 1;
@@ -27,8 +28,19 @@ export class Snake {
   private score: number | undefined
   private scenePlugin: ScenePlugin
   private playLog: PlayLog = new PlayLog()
+  private scoreIncrement: number | undefined
+  private collectCoinCallback: (currentX: number, currentY: number) => Observable<{x: number, y: number}>
+  private finishGameCallback: (currentX: number, currentY: number, playLog: any[]) => Observable<Object>
 
-  constructor(scene: Phaser.Scene, scenePlugin: ScenePlugin, x: number, y: number, scoreText: Phaser.GameObjects.Text) {
+  constructor(scene: Phaser.Scene,
+              scenePlugin: ScenePlugin,
+              x: number,
+              y: number,
+              scoreText: Phaser.GameObjects.Text,
+              movementDelay: number,
+              scoreIncrement: number,
+              collectCoinCallback: (currentX: number, currentY: number) => Observable<{x: number, y: number}>,
+              finishGameCallback: (currentX: number, currentY: number, playLog: any[]) => Observable<Object>) {
     this.scenePlugin = scenePlugin
     this.headPosition = new Phaser.Geom.Point(x, y);
 
@@ -39,7 +51,10 @@ export class Snake {
     this.head.setOrigin(0)
     this.alive = true;
 
-    this.movementDelay = 150;
+    this.finishGameCallback = finishGameCallback
+    this.collectCoinCallback = collectCoinCallback
+    this.movementDelay = movementDelay;
+    this.scoreIncrement = scoreIncrement;
 
     this.moveTime = 0;
 
@@ -140,6 +155,7 @@ export class Snake {
       hitBody
     ){
       this.die();
+      this.finishGameCallback(this.headPosition.x, this.headPosition.y, this.playLog.get()).subscribe(result => {}, error => console.error(error))
       return false;
     } else {
       //  Update the timer ready for the next movement
@@ -150,7 +166,6 @@ export class Snake {
   }
 
   private die() {
-    console.log(this.playLog)
     this.alive = false;
     this.scenePlugin.start('game-over', {score: this.score})
   }
@@ -163,11 +178,13 @@ export class Snake {
   collideWithCoin(coin: Coin) {
     if (this.head.x === coin.x && this.head.y === coin.y) {
       this.grow();
+      this.collectCoinCallback(this.head.x / 32, this.head.y / 32).subscribe(newCoin => {
+        coin.eat(newCoin.x, newCoin.y);
+        this.score = this.score!! + this.scoreIncrement!!;
+        this.scoreText!!.setText("Score: "+ this.score)
+        this.playLog.recordEat(this.head.x, this.head.y)
 
-      coin.eat();
-      this.score = this.score!! + 100;
-      this.scoreText!!.setText("Score: "+ this.score)
-      this.playLog.recordEat(this.head.x, this.head.y)
+      }, error => {return false})
       return true;
     } else {
       return false;

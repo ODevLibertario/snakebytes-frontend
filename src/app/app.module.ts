@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {Injector, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,14 @@ import { PrizeComponent } from './prize/prize.component';
 import { FaqComponent } from './faq/faq.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { SignUpComponent } from './sign-up/sign-up.component';
+import {MdbFormsModule} from "mdb-angular-ui-kit/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {BackendService} from "./service/backend.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
+import {LocalStorageService} from "./service/localStorage.service";
+import {ServiceLocator} from "./service/locator.service";
 
 @NgModule({
   declarations: [
@@ -20,15 +28,25 @@ import {ReactiveFormsModule} from "@angular/forms";
     LeaderboardComponent,
     PrizeComponent,
     FaqComponent,
-    SignInComponent
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MdbCollapseModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MdbFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [BackendService, LocalStorageService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private injector: Injector) {
+    ServiceLocator.injector = injector;
+  }
+
+}

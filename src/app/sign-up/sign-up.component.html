@@ -1,0 +1,45 @@
+<div style="display: flex; width: 100%; justify-content: center">
+  <div
+    style="margin-top: 3%; background-color: rgba(245,157,65,0.8); width: 75vh; min-height: 80vh; display: flex;  align-items: center; flex-direction: column">
+    <div style="margin-top: 3%">
+      <span style="font-size: 34px; color:white; font-weight: bold">Sign up</span>
+    </div>
+    <div style="margin-top: 3%;width: 100%; display: flex; justify-content: center; flex-direction: column">
+      <div style="width: 85%;border: 2px solid #dddddd; padding: 5%; border-radius: 6px; margin-left: 7%">
+        <form [formGroup]="signUpForm!!" (ngSubmit)="signUp()">
+          <div class="input-group mb-3">
+            <span class="input-group-text" style="color:white">Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default" formControlName="username" required maxlength="20"/>
+          </div>
+          <div class="input-group mb-3" *ngIf="privateKey">
+            <span class="input-group-text" style="color:white">Private Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+            <textarea mdbInput class="form-control" disabled="disabled" rows="4" style="height: 150px" [value]="privateKey"></textarea>
+          </div>
+          <div class="input-group mb-3" *ngIf="pubKeyHash">
+            <span class="input-group-text" style="color:white">PubKey Hash&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default" disabled="disabled" [value]="pubKeyHash" />
+          </div>
+
+
+          <div class="input-group mb-3" style="justify-content: flex-end">
+            <button type="submit" class="btn btn-primary" style="background-color: #009C03;">Sign Up</button>
+          </div>
+        </form>
+      </div>
+      <div style="margin-top: 3%;width: 100%; display: flex; justify-content: center">
+        <span style="font-size: 34px; color:white; font-weight: bold">Instructions</span>
+      </div>
+      <div style="margin-top: 3%;width: 85%; display: flex; justify-content: center; margin-left: 3%">
+        <p style="font-size: 16px; color:white;">Pick a unique username with a maximum of 20 characters and click Sign Up.</p>
+      </div>
+      <div style="width: 85%; display: flex; justify-content: center; margin-left: 5%">
+        <p style="font-size: 16px; color:white;">If your username is unique, you will be signed up and be given two keys.
+          A PGP private key, you will need that to redeem the prize copy it and save to a file. And a Public Key Hash that is used to prove you own that username and serves as a password to sign in, both keys will never be shown again, save them.</p>
+      </div>
+
+
+    </div>
+  </div>
+</div>

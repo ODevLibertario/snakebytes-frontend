@@ -11,10 +11,7 @@ export class Coin extends Phaser.GameObjects.Image {
     scene.children.add(this);
   }
 
-  eat() {
-    const x = Phaser.Math.Between(0, 23);
-    const y = Phaser.Math.Between(0, 18);
-
+  eat(x: number, y: number) {
     this.setPosition(x * 32, y * 32);
   }
 }

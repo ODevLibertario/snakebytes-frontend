@@ -33,7 +33,6 @@ export class StartScene extends Phaser.Scene {
   }
 
   startGame() {
-    console.log(this.scene)
     this.scene.start('snake')
   }
 

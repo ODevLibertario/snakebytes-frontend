@@ -34,9 +34,8 @@ export class PlayLog {
     this.log.push('EAT'+(this.eats.length - 1))
   }
 
-  print(){
-    console.log(this.log)
-    console.log(this.eats)
+  get(){
+    return this.log
   }
 
 }

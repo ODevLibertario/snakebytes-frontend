@@ -3,6 +3,8 @@ import Phaser from 'phaser';
 import {GameScene} from "../game.scene";
 import {StartScene} from "../start.scene";
 import {GameOverScene} from "../game-over.scene";
+import {Router} from "@angular/router";
+import {LocalStorageService} from "../../service/localStorage.service";
 @Component({
   selector: 'game',
   templateUrl: './game.component.html',
@@ -11,7 +13,7 @@ import {GameOverScene} from "../game-over.scene";
 export class GameComponent implements OnInit {
   phaserGame: Phaser.Game | undefined;
   config: Phaser.Types.Core.GameConfig;
-  constructor() {
+  constructor(private router: Router, private localStorageService: LocalStorageService) {
     this.config = {
       type: Phaser.AUTO,
       height: 608,
@@ -23,6 +25,10 @@ export class GameComponent implements OnInit {
     };
   }
   ngOnInit() {
-    this.phaserGame = new Phaser.Game(this.config);
+    if(this.localStorageService.getItem('username')){
+      this.phaserGame = new Phaser.Game(this.config);
+    }else {
+      this.router.navigate(['/sign-in'])
+    }
   }
 }
