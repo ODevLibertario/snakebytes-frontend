@@ -22,6 +22,7 @@ export class SignInComponent implements OnInit{
               private router: Router) { }
 
   ngOnInit() {
+    this.sending = false
     this.signInForm = this.formBuilder.group({
       username: [''],
       pubKeyHash: ['']

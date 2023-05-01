@@ -21,6 +21,7 @@ export class SignUpComponent implements OnInit{
               private clipboard: Clipboard) { }
 
   ngOnInit() {
+    this.sending = false
     this.signUpForm = this.formBuilder.group({
       username: [''],
       publicKey: ['']
