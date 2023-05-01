@@ -33,6 +33,7 @@ export class SignUpComponent implements OnInit{
   }
 
   signUp(){
+    this.sending = true
     this.backendService.signUp(this.signUpForm?.value?.username).subscribe(response => {
       if(response instanceof String){
         throw response
