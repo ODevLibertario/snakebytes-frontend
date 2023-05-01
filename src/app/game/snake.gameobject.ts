@@ -178,7 +178,9 @@ export class Snake {
   collideWithCoin(coin: Coin) {
     if (this.head.x === coin.x && this.head.y === coin.y) {
       this.grow();
+      coin.setVisible(false);
       this.collectCoinCallback(this.head.x / 32, this.head.y / 32).subscribe(newCoin => {
+        coin.setVisible(true);
         coin.eat(newCoin.x, newCoin.y);
         this.score = this.score!! + this.scoreIncrement!!;
         this.scoreText!!.setText("Score: "+ this.score)

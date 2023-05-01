@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 import {Subscription} from "rxjs";
 
 
-const BACKEND_URL = "https://snakebytes-backend.onrender.com"
+const BACKEND_URL = "http://localhost:3333"
 @Injectable()
 export class BackendService {
   constructor(private http: HttpClient) { }
