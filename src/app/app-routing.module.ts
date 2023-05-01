@@ -13,7 +13,8 @@ const routes: Routes = [
   {path: 'leaderboard', component: LeaderboardComponent},
   {path: 'prize', component: PrizeComponent},
   {path: 'sign-in', component: SignInComponent},
-  {path: 'sign-up', component: SignUpComponent}
+  {path: 'sign-up', component: SignUpComponent},
+  {component: GameComponent}
 
 ];
 
