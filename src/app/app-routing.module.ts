@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'prize', component: PrizeComponent},
   {path: 'sign-in', component: SignInComponent},
   {path: 'sign-up', component: SignUpComponent},
-  {component: GameComponent}
+  {path: '',component: GameComponent}
 
 ];
 
