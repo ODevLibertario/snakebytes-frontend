@@ -19,6 +19,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {LocalStorageService} from "./service/localStorage.service";
 import {ServiceLocator} from "./service/locator.service";
+import {CountdownModule} from "ngx-countdown";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {ServiceLocator} from "./service/locator.service";
     MdbFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CountdownModule
   ],
   providers: [BackendService, LocalStorageService],
   bootstrap: [AppComponent]

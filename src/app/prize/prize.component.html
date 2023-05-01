@@ -1,5 +1,9 @@
 <div style="display: flex; width: 100%; justify-content: center">
   <img src="assets/trophy.svg" width="40%" style="margin-top: 5%" id="trophy">
-  <div style="position: absolute; margin-top: 7%; word-wrap: break-word; max-width: 23%" *ngIf="prize">{{prize.payload}}</div>
+  <div style="position: absolute; margin-top: 7%; word-wrap: break-word; max-width: 25%; color: green; max-height: 25%; text-overflow: ellipsis; overflow: hidden;cursor: pointer"
+       [title]=toolTip()
+       (click)="copyToClipboard()"
+       *ngIf="prize">{{prize.payload}}</div>
   <div style="position: absolute; margin-top: 35%; color: #FDD200" *ngIf="prize">{{prize.username}}</div>
+  <div style="position: absolute; margin-top: 45%; color: white">*New winner gets picked at 9 AM UTC</div>
 </div>

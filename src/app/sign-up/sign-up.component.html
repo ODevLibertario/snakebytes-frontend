@@ -12,14 +12,14 @@
             <input type="text" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default" formControlName="username" required maxlength="20"/>
           </div>
-          <div class="input-group mb-3" *ngIf="privateKey">
+          <div class="input-group mb-3" *ngIf="privateKey" (click)="copyToClipboard(privateKey)" style="cursor: pointer" >
             <span class="input-group-text" style="color:white">Private Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
-            <textarea mdbInput class="form-control" disabled="disabled" rows="4" style="height: 150px" [value]="privateKey"></textarea>
+            <textarea mdbInput class="form-control" rows="4" style="height: 150px;cursor: pointer" [value]="privateKey" disabled></textarea>
           </div>
-          <div class="input-group mb-3" *ngIf="pubKeyHash">
+          <div class="input-group mb-3" *ngIf="pubKeyHash" (click)="copyToClipboard(pubKeyHash)">
             <span class="input-group-text" style="color:white">PubKey Hash&nbsp;&nbsp;&nbsp;&nbsp;  </span>
             <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default" disabled="disabled" [value]="pubKeyHash" />
+                   aria-describedby="inputGroup-sizing-default" [value]="pubKeyHash" disabled style="cursor: pointer" />
           </div>
 
 

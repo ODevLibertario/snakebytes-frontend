@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {BackendService} from "../service/backend.service";
 import {ToastrService} from "ngx-toastr";
+import {Clipboard} from "@angular/cdk/clipboard";
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,10 @@ export class SignUpComponent implements OnInit{
   public privateKey: string | undefined;
   public pubKeyHash: string | undefined;
 
-  constructor(private formBuilder: FormBuilder, private backendService: BackendService, private toastr: ToastrService) { }
+  constructor(private formBuilder: FormBuilder,
+              private backendService: BackendService,
+              private toastr: ToastrService,
+              private clipboard: Clipboard) { }
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
@@ -34,5 +38,10 @@ export class SignUpComponent implements OnInit{
     }, response => {
       this.toastr.error(response.error.message)
     })
+  }
+
+  copyToClipboard(value: string) {
+    this.clipboard.copy(value)
+    this.toastr.success("Copied to cliboard")
   }
 }

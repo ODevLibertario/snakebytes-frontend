@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LocalStorageService} from "../service/localStorage.service";
 import {Router} from "@angular/router";
 import {Observable, Subject, timer} from "rxjs";
+import {BackendService} from "../service/backend.service";
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,10 @@ import {Observable, Subject, timer} from "rxjs";
 })
 export class NavbarComponent implements OnInit{
 
-  constructor(private localStorageService: LocalStorageService, private router: Router) {
+  constructor(
+    private localStorageService: LocalStorageService,
+    private router: Router,
+    private backendService: BackendService) {
   }
 
   public username: string | null = null
@@ -19,11 +23,18 @@ export class NavbarComponent implements OnInit{
     this.localStorageService.localStorageChangeEvents.subscribe(key => {
       if(key === 'username'){
         //Give time for the localStorage change to propagate
-        timer(1000).subscribe(() => {
+        timer(500).subscribe(() => {
           this.username = this.localStorageService.getItem('username')
         })
       }
     })
+
+    setInterval(() => {
+      console.log("ping")
+      this.backendService.ping().subscribe(response => {
+        console.log((response as any).message)
+      })
+    }, 30000)
 
   }
 
