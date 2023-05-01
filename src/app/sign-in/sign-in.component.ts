@@ -37,12 +37,13 @@ export class SignInComponent implements OnInit{
     let {username, pubKeyHash} = this.signInForm?.value
     this.sending = true
     this.backendService.signIn(username, pubKeyHash).subscribe(response => {
-      this.sending = false
       this.localStorageService.setItem('username', username)
       this.localStorageService.setItem('pubKeyHash', pubKeyHash)
       this.router.navigate(['/game'])
     }, response => {
       this.toastr.error(response.error.message)
+    }, () => {
+      this.sending = false
     })
   }
 }
