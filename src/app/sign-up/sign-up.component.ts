@@ -13,6 +13,7 @@ export class SignUpComponent implements OnInit{
   signUpForm: FormGroup | undefined;
   public privateKey: string | undefined;
   public pubKeyHash: string | undefined;
+  public sending: boolean = false
 
   constructor(private formBuilder: FormBuilder,
               private backendService: BackendService,
@@ -26,8 +27,14 @@ export class SignUpComponent implements OnInit{
     })
   }
 
+  isButtonDisabled(){
+    return this.signUpForm?.invalid || this.sending
+  }
+
   signUp(){
+    this.sending = true;
     this.backendService.signUp(this.signUpForm?.value?.username).subscribe(response => {
+      this.sending = false
       if(response instanceof String){
         throw response
       }else{

@@ -13,6 +13,7 @@ import {timer} from "rxjs";
 })
 export class SignInComponent implements OnInit{
   signInForm: FormGroup | undefined;
+  public sending: boolean = false
 
   constructor(private formBuilder: FormBuilder,
               private backendService: BackendService,
@@ -27,16 +28,18 @@ export class SignInComponent implements OnInit{
     })
   }
 
+  isButtonDisabled(){
+    return this.signInForm?.invalid || this.sending
+  }
+
   signIn(){
     let {username, pubKeyHash} = this.signInForm?.value
-
+    this.sending = true
     this.backendService.signIn(username, pubKeyHash).subscribe(response => {
+      this.sending = false
       this.localStorageService.setItem('username', username)
       this.localStorageService.setItem('pubKeyHash', pubKeyHash)
       this.router.navigate(['/game'])
-
-
-
     }, response => {
       this.toastr.error(response.error.message)
     })
