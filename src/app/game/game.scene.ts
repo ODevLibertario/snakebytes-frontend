@@ -69,6 +69,12 @@ export class GameScene extends Phaser.Scene {
 
   override update(time: any, delta: any) {
     if (!this.snake || !this.cursors || !this.coin || !this.snake.alive) {
+      console.log('snake')
+      console.log(this.snake)
+      console.log('cursors')
+      console.log(this.cursors)
+      console.log('coin')
+      console.log(this.coin)
       return;
     }
 
