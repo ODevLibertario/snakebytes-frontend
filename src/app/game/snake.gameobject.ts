@@ -177,7 +177,10 @@ export class Snake {
 
   collideWithCoin(coin: Coin) {
     if (this.head.x === coin.x && this.head.y === coin.y) {
+      // Every coin eaten grows twice to the game is more difficult
       this.grow();
+      this.grow();
+
       coin.setVisible(false);
       this.collectCoinCallback(this.head.x / 32, this.head.y / 32).subscribe(newCoin => {
         coin.setVisible(true);
