@@ -1,9 +1,11 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Subscription} from "rxjs";
+import {environment} from "../../environments/environment";
 
 
-const BACKEND_URL = "https://snakebytes-backend.onrender.com"
+const BACKEND_URL = environment.backendUrl
+
 @Injectable()
 export class BackendService {
   constructor(private http: HttpClient) { }
